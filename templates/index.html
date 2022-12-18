@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <title>Spam Detector</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container{
+            width: 70%;
+            height: 100vh;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+
+        .message_area{
+            width: 100%;
+            height: 25vh;
+            
+        }
+
+        .text_area{
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button_area{
+            width: 100%;
+            height: 25vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        #msger-input{
+            width: 100%;
+            height: 100%;
+        }
+
+        #button{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="message_area">
+
+        </div>
+
+            <div class="text_area">
+                <textarea name="text_contents" id="msger-input" cols="30" rows="10" required></textarea>
+            </div>
+    
+            <div class="button_area">
+                <button class="btn btn-success" id="button" onclick="classifyText()">CLASSIFY TEXT</button>
+            </div>
+
+
+    </div>
+    
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>
