@@ -14,7 +14,9 @@ def home():
 @app.route("/classify", methods = ["POST"])
 def classification():
 
-    contents = request.json["message"]
+    #contents = request.json["message"]
+
+    contents = request.form["text_contents"]
 
     model = joblib.load("./models/spam-detection-model.pkl")
 
@@ -24,10 +26,17 @@ def classification():
 
     prediction = str(results[0])
 
+    # if prediction == "0":
+    #     return jsonify({"message": "The given message is not a spam"})
+    # else:
+    #     return jsonify({"message": "The given message is a spam"})
+
     if prediction == "0":
-        return jsonify({"message": "The given message is not a spam"})
+        good_results = prediction
+        return render_template("index.html", good_results = good_results)
     else:
-        return jsonify({"message": "The given message is a spam"})
+        bad_results = prediction
+        return render_template("index.html", bad_results = bad_results)
         
     
 
