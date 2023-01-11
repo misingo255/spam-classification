@@ -3,15 +3,15 @@ from flask import Flask,request,render_template,jsonify
 import warnings
 warnings.filterwarnings("ignore")
 
-app = Flask(__name__)
+application = Flask(__name__)
 
-@app.route("/", methods = ["GET"])
+@application.route("/", methods = ["GET"])
 def home():
     return render_template("index.html")
     
 
 
-@app.route("/classify", methods = ["POST"])
+@application.route("/classify", methods = ["POST"])
 def classification():
 
     #contents = request.json["message"]
@@ -43,4 +43,4 @@ def classification():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    application.run(debug=True)
