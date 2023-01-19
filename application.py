@@ -16,7 +16,9 @@ def classification():
 
     #contents = request.json["message"]
 
-    contents = request.form["text_contents"]
+    #contents = request.form["text_contents"]
+
+    contents = request.form.get('text_contents')
 
     model = joblib.load("./models/spam-detection-model.pkl")
 
