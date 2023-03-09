@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <title>Spam Detector</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contain{
+            width: 90%;
+            height: 100vh;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        .message_area{
+            width: 100%;
+            height: 15vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        .banner{
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-outline{
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button_area{
+            width: 100%;
+            height: 25vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        #msger-input{
+            width: 100%;
+            height: 100%;
+        }
+
+        #button{
+            width: 50%;
+            margin: 10px;
+        }
+
+        p{
+            font-size: 40px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contain">
+
+        <div class="banner">
+            <p>SPAM</p>
+            <p>DETECTOR</p>
+        </div>
+
+        <div class="message_area">
+
+            {% if good_results %}
+
+                <div class="alert alert-success">
+                        This is not a spam, thats good!!
+                </div>
+
+            {% endif %}
+
+            
+            {% if bad_results %}
+
+                <div class="alert alert-danger">
+                        This is a spam, this is really bad!!
+                </div>
+
+            {% endif %}
+        </div>
+
+            <form action="/classify" method="POST" enctype="multipart/form-data">
+
+                <div class="text_area">
+                    <div class="form-outline">
+                        <textarea class="form-control" id="textAreaExample1" name="text_contents" cols="30" rows="10" required></textarea>
+                        <!-- <label class="form-label" for="textAreaExample">Message</label> -->
+                      </div>
+                </div>
+        
+                <div class="button_area">
+                    <button class="btn btn-success" id="button" type="submit">CLASSIFY TEXT</button>
+                    <a href="/" class="btn btn-primary" id="button" >RESET TEXT</a>
+                </div>
+
+            </form>
+
+
+    </div>
+    
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>
